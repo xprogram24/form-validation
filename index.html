@@ -11,20 +11,67 @@
     <form action="" id="form">
         <label for="name">Name</label>
         <input type="text" class="name" id="Name" placeholder="first name">
-        <span id="name-error"></span>
+        <span id="nameerror"></span>
 
-        <label for="name">Name</label>
-        <input type="text" class="name" id="Name" placeholder="first name">
-        <span id="name-error"></span>
+        <label for="name">Email</label>
+        <input type="email" class="name" id="Email" placeholder="Email">
+        <span id="Emailerror"></span>
 
-        <label for="name">Name</label>
-        <input type="text" class="name" id="Name" placeholder="first name">
-        <span id="name-error"></span>
+        <label for="name">Password</label>
+        <input type="password" class="password" id="Password" placeholder="Password">
+        <span id="Passworderror"></span>
 
-        <label for="name">Name</label>
-        <input type="text" class="name" id="Name" placeholder="first name">
-        <span id="name-error"></span>
+        <input type="submit" value="submit" id="button">
     </form>
+
+    <script>
+      
+      let form = document.getElementById('form')
+      
+
+       form.addEventListener('submit' ,function(e){
+        e.preventDefault()
+
+        let name = document.getElementById('Name')
+        let Email = document.getElementById('Email')
+        let Password = document.getElementById('Password')
+
+        let nameError = document.getElementById('nameerror')
+        let emailError = document.getElementById('Emailerror')
+        let passwordError = document.getElementById('Passworderror')
+
+ 
+
+        nameError.innerText = ''
+        emailError.innerText = ''
+        passwordError.innerText = ''
+
+
+        let valid = true;
+
+        
+        if (name.value.trim() === '') {
+            nameError.innerText = 'field empty'
+            valid = false
+            
+        }
+
+        if(!Email.value.includes('@') || !Email.value.includes('.') || Email.value.indexOf('@') === 0 || Email.value.lastIndexOf('.')< Email.value.indexOf('@')){
+            emailError.innerText = 'invalid format'
+            valid = false
+        }
+
+        if(Password.value.length < 6){
+            passwordError.innerText = 'pasword must be 6 charachter long'
+            valid = false
+
+        }
+        if(valid){
+            alert( `succesfully submitted`)
+            form.reset()
+        }
+       })
+    </script>
     
 </body>
 </html>
